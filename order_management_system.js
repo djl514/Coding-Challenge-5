@@ -7,5 +7,6 @@ const inventory = [
     { name: 'Margarita', price: 2, quantity: 6 }  
 ];
 
-
+//2. Create an Orders Array of Order Objects
+orders = [];
 
