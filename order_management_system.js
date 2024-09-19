@@ -3,7 +3,7 @@ const inventory = [
     { name: 'Scotch', price: 6, quantity: 11 },
     { name: 'Ale', price: 4, quantity: 5 },
     { name: 'Bourbon', price: 6, quantity: 8 },
-    { name: 'Martini', price: 3, quantity: 3 },
+    { name: 'Martini', price: 4, quantity: 3 },
     { name: 'Margarita', price: 2, quantity: 6 }  
 ];
 
@@ -23,7 +23,7 @@ function placeOrder(customerName, orderedItems, purchaseAmount){
         orders.push(newOrder);
         item.quantity -= purchaseAmount;
         
-        return orders;
+        return newOrder;
 
     } else if (!item){
         return `${orderedItems} is not available`;
@@ -33,15 +33,36 @@ function placeOrder(customerName, orderedItems, purchaseAmount){
     }
 }
 
-placeOrder('David', 'Margarita', 2);
+placeOrder('David', 'Margarita', 4);
 placeOrder('Martha', 'Martini', 1);
+placeOrder('James', 'Whiskey', 2);
+placeOrder('Ian', 'Bourbon', 100);
 console.log(orders);
 
 //4. Create a Function to calculate total for an order
 function calculateOrderTotal(orders){
-    let item = inventory.find(({ price }) => price);
-    let orderTotal = orders.purchased * item.price;
-    return orderTotal;
+    let invPrice = orders.find((prod) => prod.name)
+    const totalValue = inventory.reduce((sum, product) => 
+        sum + (invPrice.purchased*product.price), 0);
+    return totalValue;
+
 }
 
-console.log(calculateOrderTotal(orders[0]));
+console.log(calculateOrderTotal(orders[1]));
+
+//5. Create a Function to mark an order as completed
+function completeOrder(customerName){
+    let customer = orders.find(({ name }) => name == customerName);
+    if (customer.status = 'Pending'){
+        customer.status = 'Completed';
+        return customer;
+    } else {
+        return `Error: ${customerName} not in system`;
+    }
+
+}
+
+console.log(completeOrder('David'));
+console.log(orders);
+
+//6. Create a Function to Check Pending Orders
