@@ -2,7 +2,7 @@
 const inventory = [
     { name: 'Scotch', price: 6, quantity: 11 },
     { name: 'Ale', price: 4, quantity: 5 },
-    { name: 'Bourbon', price: 5, quantity: 8 },
+    { name: 'Bourbon', price: 6, quantity: 8 },
     { name: 'Martini', price: 3, quantity: 3 },
     { name: 'Margarita', price: 2, quantity: 6 }  
 ];
@@ -33,5 +33,15 @@ function placeOrder(customerName, orderedItems, purchaseAmount){
     }
 }
 
-console.log(placeOrder('David', 'Margarita', 2));
+placeOrder('David', 'Margarita', 2);
+placeOrder('Martha', 'Martini', 1);
+console.log(orders);
 
+//4. Create a Function to calculate total for an order
+function calculateOrderTotal(orders){
+    let item = inventory.find(({ price }) => price);
+    let orderTotal = orders.purchased * item.price;
+    return orderTotal;
+}
+
+console.log(calculateOrderTotal(orders[0]));
