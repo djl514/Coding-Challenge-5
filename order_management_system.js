@@ -8,5 +8,30 @@ const inventory = [
 ];
 
 //2. Create an Orders Array of Order Objects
-orders = [];
+let orders = [];
+
+//3. Create a function to place an order
+function placeOrder(customerName, orderedItems, purchaseAmount){
+    let item = inventory.find(({ name }) => name === orderedItems);
+
+    if (item && item.quantity >= purchaseAmount){
+        let newOrder = { 
+            name: customerName, 
+            inventoryItem: orderedItems, 
+            purchased: purchaseAmount, 
+            status: 'Pending' };    
+        orders.push(newOrder);
+        item.quantity -= purchaseAmount;
+        
+        return orders;
+
+    } else if (!item){
+        return `${orderedItems} is not available`;
+
+    } else{
+        return `Insufficient Stock of ${orderedItems}`;
+    }
+}
+
+console.log(placeOrder('David', 'Margarita', 2));
 
