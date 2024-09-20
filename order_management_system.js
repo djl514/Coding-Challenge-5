@@ -45,5 +45,29 @@ function calculateOrderTotal(order){
     return `Your total is $${total}`;
 }
 
-console.log(calculateOrderTotal(orders[1]));
+console.log(calculateOrderTotal(orders[0]));
 
+//5. Create a Function to mark an order as completed
+function completeOrder(customerName){
+    let order = orders.find(cust => cust.custName === customerName);
+    if(order){
+        order.status = 'Completed';
+        return `Order Completed for ${customerName}`;
+    } else{
+        return `Customer not found`;
+    }
+}
+
+console.log(completeOrder('Kailey'));
+
+//6. Create a function to check pending orders
+function checkPendingOrders(orders){
+    let pendingOrders = orders.find(pend=>pend.status)
+    orders.forEach(order =>{
+        if (pendingOrders = 'Pending'){
+            return order;
+        }
+    });
+}
+
+console.log(checkPendingOrders(orders));
