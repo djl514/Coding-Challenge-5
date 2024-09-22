@@ -59,15 +59,17 @@ function completeOrder(customerName){
 }
 
 console.log(completeOrder('Kailey'));
+console.log(orders);
 
 //6. Create a function to check pending orders
 function checkPendingOrders(orders){
-    let pendingOrders = orders.find(pend=>pend.status)
-    orders.forEach(order =>{
-        if (pendingOrders = 'Pending'){
-            return order;
+    orders.forEach(order => {
+        let orderDetails = order.itemsPurchased;
+        let orderStatus = order.status;
+        if (orderStatus == 'Pending'){
+            console.log(order);
         }
     });
 }
 
-console.log(checkPendingOrders(orders));
+checkPendingOrders(orders);
