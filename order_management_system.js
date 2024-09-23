@@ -64,7 +64,6 @@ console.log(orders);
 //6. Create a function to check pending orders
 function checkPendingOrders(orders){
     orders.forEach(order => {
-        let orderDetails = order.itemsPurchased;
         let orderStatus = order.status;
         if (orderStatus == 'Pending'){
             console.log(order);
